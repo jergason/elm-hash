@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "summary": "Hash functions for Elm",
+  "repository": "https://github.com/jergason/elm-hash.git",
+  "license": "MIT",
+  "source-directories": [
+    "."
+  ],
+  "exposed-modules": [
+    "Hash"
+  ],
+  "dependencies": {
+    "elm-lang/core": "4.0.1 <= v < 5.0.0"
+  },
+  "elm-version": "0.17.0 <= v < 0.18.0"
+}
