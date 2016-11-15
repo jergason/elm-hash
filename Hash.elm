@@ -5,26 +5,27 @@ module Hash exposing (hash)
 @docs hash
 -}
 
-import Bitwise exposing (shiftLeft)
+import Bitwise exposing (shiftLeftBy)
 import Char exposing (toCode)
 import String exposing (foldl)
 
 
 {-
-from http://www.cse.yorku.ca/~oz/hash.html
+   from http://www.cse.yorku.ca/~oz/hash.html
 
-```c
-unsigned long hash(unsigned char *str) {
-  unsigned long hash = 5381;
-  int c;
+   ```c
+   unsigned long hash(unsigned char *str) {
+     unsigned long hash = 5381;
+     int c;
 
-  while (c = *str++)
-    hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+     while (c = *str++)
+       hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
 
-  return hash;
-}
-```
+     return hash;
+   }
+   ```
 -}
+
 
 {-|
 Hashes a String to an Int using the
@@ -35,9 +36,9 @@ cryptographically secure. It is just for turning abirary strings in to numbers.
 -}
 hash : String -> Int
 hash str =
-  foldl updateHash 5381 str
+    foldl updateHash 5381 str
 
 
 updateHash : Char -> Int -> Int
 updateHash c h =
-  (h `shiftLeft` 5) + h + toCode c
+    (shiftLeftBy 5 h) + h + toCode c
